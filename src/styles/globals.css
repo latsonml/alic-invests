@@ -302,22 +302,32 @@ section{padding:clamp(72px,10vh,132px) var(--pad)}
     right:0;
     left:auto;
     top:24%;
+    min-width:0;
+    max-width:min(44%, 168px);
     padding:10px 12px;
     gap:8px;
     border-radius:10px;
+    overflow:hidden;
   }
-  .pay-icon{width:30px;height:30px}
+  .pay-card > div:nth-child(2){min-width:0;flex:1}
+  .pay-icon{width:30px;height:30px;flex-shrink:0}
   .pay-icon svg{width:16px;height:16px}
-  .pay-name{font-size:11px}
-  .pay-time{font-size:8px;margin-top:1px}
-  .pay-amt{font-size:13px}
+  .pay-name{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pay-time{font-size:8px;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pay-amt{margin-left:auto;flex-shrink:0;font-size:11px;letter-spacing:-.03em}
 }
 @media (max-width:480px){
   .stage{height:clamp(230px,68vw,290px)}
-  .tag-box,.pay-card{max-width:46%;font-size:8px;padding:6px 8px}
-  .pay-card{gap:6px;padding:8px 10px}
+  .tag-box,.pay-card{max-width:min(50%, 168px);font-size:8px;padding:6px 8px}
+  .pay-card{
+    flex-wrap:wrap;align-items:flex-start;gap:4px 6px;
+    padding:8px 10px;
+  }
   .pay-name{font-size:10px}
-  .pay-amt{font-size:12px}
+  .pay-time{font-size:7px;margin-top:2px;line-height:1.2}
+  .pay-amt{
+    width:100%;margin-left:0;text-align:right;font-size:11px;line-height:1;
+  }
 }
 
 /* ============================================================
