@@ -18,9 +18,9 @@ const SAFEGUARDS = [
   },
   {
     id: 'S-04',
-    title: 'Secured, short, and senior',
+    title: 'Secured and short',
     description:
-      'Positions are UCC-secured with personal guarantees, average ~16 weeks, and sit at the front of the repayment line. Short duration means the book re-prices itself constantly.',
+      'Positions are UCC-secured, average ~16 weeks, and sit at the front of the accounts receivable. Short duration means the book re-prices itself constantly.',
   },
 ]
 

@@ -1,10 +1,27 @@
 import GrowthCurve from './GrowthCurve'
+import { NET_CYCLE_RETURN_PCT, REPAYMENT_PERFORMANCE_PCT } from '../lib/growthModel'
 
 const FIGURES = [
-  { target: 12.4, decimals: 1, suffix: '%', label: 'Target net annual yield, after all fund fees' },
-  { target: 98.2, decimals: 1, suffix: '%', label: 'Repayment performance across the active book' },
+  {
+    target: NET_CYCLE_RETURN_PCT,
+    decimals: 1,
+    suffix: '%',
+    label: 'Target return per 16-week cycle',
+  },
+  {
+    target: REPAYMENT_PERFORMANCE_PCT,
+    decimals: 0,
+    suffix: '%',
+    label: 'Repayment performance across the active book',
+  },
   { target: 1400, decimals: 0, suffix: '+', label: 'Small businesses funded since inception' },
-  { target: 16, decimals: 0, suffix: 'wks', suffixSpace: true, label: 'Average position duration — your capital recycles fast' },
+  {
+    target: 16,
+    decimals: 0,
+    suffix: 'wks',
+    suffixSpace: true,
+    label: 'Average position duration — your capital recycles fast',
+  },
 ] as const
 
 export default function Performance() {

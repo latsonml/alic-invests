@@ -351,6 +351,7 @@ section{padding:clamp(72px,10vh,132px) var(--pad)}
 .curve-legend i{display:inline-block;width:22px;height:0}
 .curve-legend .k-alic i{border-top:2.5px solid var(--spring)}
 .curve-legend .k-bank i{border-top:1.5px dashed var(--bone-60)}
+.curve-disc{margin-top:14px;font-size:11px;line-height:1.55;color:var(--bone-60);max-width:72ch}
 
 /* ============================================================
    Calculator
@@ -508,3 +509,11 @@ footer .mono{color:var(--ink-60)}
 }
 @keyframes orb-pulse{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.45);opacity:0}}
 @media (prefers-reduced-motion: reduce){.invest-orb::before{animation:none;display:none}}
+@media (min-width:861px){
+  .invest-orb{
+    width:clamp(122px,14.3vw,166px);
+    height:clamp(122px,14.3vw,166px);
+    font-size:clamp(16px,1.43vw,18px);
+    padding:18px;
+  }
+}
