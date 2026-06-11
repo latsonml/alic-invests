@@ -534,9 +534,30 @@ input[type=range]::-moz-range-thumb{
 .submit:hover svg{transform:translateX(4px)}
 .form-done{
   display:none;background:var(--card);border-radius:16px;box-shadow:var(--shadow);
-  padding:32px;font-size:16px;line-height:1.6;
+  padding:clamp(28px,4vw,40px);border:1px solid var(--line-soft);
 }
-.form-done .mono{display:block;color:var(--moss);margin-bottom:12px;font-weight:600}
+.form-done-icon{
+  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:color-mix(in srgb, var(--moss) 14%, #fff);color:var(--moss);margin-bottom:20px;
+}
+.form-done .mono{display:block;color:var(--moss);margin-bottom:10px;font-weight:600}
+.form-done-title{
+  font-size:clamp(24px,3vw,30px);line-height:1.1;letter-spacing:-.03em;margin-bottom:14px;
+}
+.form-done-lead{
+  font-size:15px;line-height:1.65;color:var(--ink-60);max-width:38ch;margin-bottom:22px;
+}
+.form-done-steps-label{display:block;margin-bottom:12px;color:var(--ink-60);font-weight:600}
+.form-done-steps{list-style:none;display:grid;gap:10px}
+.form-done-steps li{
+  position:relative;padding-left:18px;font-size:13px;line-height:1.5;color:var(--ink);
+}
+.form-done-steps li::before{
+  content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;
+  background:var(--moss);
+}
+.form-error{margin:0 0 18px;font-size:14px;line-height:1.5;color:#b42318}
+.submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
 @media (max-width:860px){.invest-grid{grid-template-columns:1fr}}
 
 /* ============================================================

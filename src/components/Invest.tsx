@@ -1,21 +1,55 @@
 import { useCallback, useState, type FormEvent } from 'react'
 import gsap from 'gsap'
 
+const API_URL = import.meta.env.VITE_INVEST_API_URL || '/api/alic/invest-submit'
+
 export default function Invest() {
   const [submitted, setSubmitted] = useState(false)
+  const [submittedName, setSubmittedName] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.currentTarget
     if (!form.checkValidity()) {
       form.reportValidity()
       return
     }
-    setSubmitted(true)
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const done = document.getElementById('form-done')
-    if (done && !prefersReduced) {
-      gsap.from(done, { opacity: 0, y: 16, duration: 0.6, ease: 'power2.out' })
+
+    const data = new FormData(form)
+    const payload = {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      amount: String(data.get('amount') || '').trim(),
+    }
+
+    setSubmitting(true)
+    setError(null)
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      const result = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        throw new Error(result.error || 'Unable to submit your request. Please try again.')
+      }
+
+      setSubmittedName(payload.name)
+      setSubmitted(true)
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const done = document.getElementById('form-done')
+      if (done && !prefersReduced) {
+        gsap.from(done, { opacity: 0, y: 16, duration: 0.6, ease: 'power2.out' })
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to submit your request. Please try again.')
+    } finally {
+      setSubmitting(false)
     }
   }, [])
 
@@ -57,8 +91,13 @@ export default function Invest() {
                   <option>$1M+</option>
                 </select>
               </div>
-              <button className="submit" type="submit">
-                Request the offering documents
+              {error && (
+                <p className="form-error" role="alert">
+                  {error}
+                </p>
+              )}
+              <button className="submit" type="submit" disabled={submitting}>
+                {submitting ? 'Submitting…' : 'Request the offering documents'}
                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                   <path d="M10 1l5 5-5 5M15 6H1" stroke="currentColor" strokeWidth="1.6" />
                 </svg>
@@ -67,8 +106,24 @@ export default function Invest() {
           )}
           {submitted && (
             <div className="form-done" id="form-done" role="status" style={{ display: 'block' }}>
+              <div className="form-done-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M7 14.5l4.5 4.5L21 9.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
               <span className="mono">Request received</span>
-              Thank you — the offering documents are on their way to your inbox, along with a link to book time with the portfolio team.
+              <h3 className="form-done-title">
+                {submittedName ? `Thanks, ${submittedName.split(' ')[0]}.` : 'Thank you.'}
+              </h3>
+              <p className="form-done-lead">
+                We&apos;ve received your request. Our team will reach out shortly with the offering documents, the current performance letter, and a link to schedule a call.
+              </p>
+              <span className="mono form-done-steps-label">Next Steps</span>
+              <ul className="form-done-steps">
+                <li>Check your inbox for a confirmation email</li>
+                <li>Our portfolio team reviews every request personally</li>
+                <li>No commitment required at this stage</li>
+              </ul>
             </div>
           )}
         </div>
