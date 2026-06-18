@@ -1,0 +1,20 @@
+parameters: {}
+environment:
+  RESEND_API_KEY: ${RESEND_API_KEY}
+  NOTIFY_EMAIL: ${NOTIFY_EMAIL}
+  FROM_EMAIL: ${FROM_EMAIL}
+  ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+packages:
+  - name: alic
+    environment:
+      RESEND_API_KEY: ${RESEND_API_KEY}
+      NOTIFY_EMAIL: ${NOTIFY_EMAIL}
+      FROM_EMAIL: ${FROM_EMAIL}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+    functions:
+      - name: invest-submit
+        runtime: nodejs:18
+        web: true
+        limits:
+          memory: 256
+          timeout: 15000
