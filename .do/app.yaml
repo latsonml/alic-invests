@@ -25,7 +25,7 @@ functions:
   - name: api
     source_dir: /
     github:
-      repo: latsonml/alic-invests-pc
+      repo: latsonml/alic-invests
       branch: main
       deploy_on_push: true
     envs:
