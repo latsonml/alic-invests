@@ -226,6 +226,12 @@
   .eco-item span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-2)}
   @media(max-width:820px){.firm{grid-template-columns:1fr;gap:36px}}
 
+  /* ---------- schedule band ---------- */
+  .call-band{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:linear-gradient(160deg,var(--navy-2),var(--ink))}
+  .call-band-in{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:48px 0}
+  .call-band h3{font-size:clamp(24px,3vw,32px);margin:14px 0 10px}
+  .call-band p{color:var(--mute);font-size:15px;line-height:1.65;max-width:48ch}
+
   /* ---------- partner cta ---------- */
   .partner{background:linear-gradient(160deg,var(--navy-2),var(--ink));border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
   .partner-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -328,6 +334,7 @@
       <a href="#performance">Performance</a>
       <a href="#fund">The Fund</a>
       <a href="#philosophy">Philosophy</a>
+      <a href="https://calendly.com/michael-aliccapital/30min" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
       <a href="#partner">Contact</a>
     </nav>
     <a href="#partner" class="nav-cta">Request Materials</a>
@@ -601,6 +608,18 @@
   </div>
 </section>
 
+<!-- SCHEDULE -->
+<section class="call-band" id="schedule">
+  <div class="wrap call-band-in rv">
+    <div>
+      <span class="eyebrow">Speak with the Team</span>
+      <h3>Prefer a conversation first?</h3>
+      <p>Book a 30-minute call with our portfolio team to walk through the fund, current performance, and whether Alic is the right fit.</p>
+    </div>
+    <a href="https://calendly.com/michael-aliccapital/30min" class="btn btn-solid" target="_blank" rel="noopener noreferrer">Schedule a Call <span class="arr">→</span></a>
+  </div>
+</section>
+
 <!-- PARTNER CTA -->
 <section class="partner pad-lg" id="partner">
   <div class="wrap partner-in">
@@ -609,6 +628,7 @@
       <h2 style="margin-top:18px">Partner with <span class="it">Alic Capital.</span></h2>
       <p>We are currently accepting new partners for the Alic Income Fund. Accredited investors and family offices only. No commitment — we'll send the offering documents and a calendar link for the portfolio team.</p>
       <div class="partner-contact">
+        <a href="https://calendly.com/michael-aliccapital/30min" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
         <a href="tel:+19542478205">954-247-8205</a>
         <address>4800 N. Federal Hwy, Suite B200<br>Boca Raton, FL 33431</address>
       </div>
@@ -655,7 +675,7 @@
         </div>
         <span class="mono">Request received</span>
         <h3 class="form-done-title" id="form-done-title">Thank you.</h3>
-        <p class="form-done-lead">We've received your request. Our team will reach out shortly with the offering documents, the current performance letter, and a link to schedule a call.</p>
+        <p class="form-done-lead">We've received your request. Our team will reach out shortly with the offering documents and the current performance letter. You can also <a href="https://calendly.com/michael-aliccapital/30min" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">schedule a call</a> with our portfolio team now.</p>
         <span class="mono form-done-steps-label">Next Steps</span>
         <ul class="form-done-steps">
           <li>Check your inbox for a confirmation email</li>
@@ -691,6 +711,7 @@
         <h4>Contact</h4>
         <a href="tel:+19542478205">954-247-8205</a>
         <p class="foot-contact">4800 N. Federal Hwy, Suite B200<br>Boca Raton, FL 33431</p>
+        <a href="https://calendly.com/michael-aliccapital/30min" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
         <a href="#partner">Request Materials</a>
       </div>
     </div>
